@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-
     readonly serverUrl = "http://localhost:49831/"
+
+    @Output() logged = false;
 
     constructor(private http: HttpClient) { }
 
