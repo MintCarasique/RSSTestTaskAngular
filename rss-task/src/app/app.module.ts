@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,32 +14,35 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { AuthGuard } from './shared/auth.guard';
 
 import { UserService } from './shared/user.service';
+import { NewsService } from './shared/news.service';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: '', redirectTo:'home', pathMatch: 'full' },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
 ]
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    HomeComponent,
-    NavigationBarComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes),
-    NgbModule.forRoot(),
-    FormsModule
-  ],
-  providers: [
-      UserService
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        RegisterComponent,
+        HomeComponent,
+        NavigationBarComponent
     ],
-  bootstrap: [AppComponent]
+    imports: [
+        CommonModule,
+        BrowserModule,
+        HttpClientModule,
+        RouterModule.forRoot(routes),
+        NgbModule.forRoot(),
+        FormsModule
+    ],
+    providers: [
+        UserService,
+        NewsService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

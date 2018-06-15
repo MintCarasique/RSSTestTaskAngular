@@ -1,3 +1,5 @@
-<p>
-  home works!
-</p>
+<ul class="list-group">
+    <div *ngFor="let newsEl of newsList">
+        <li class="list-group-item" [innerHTML]="newsEl.Description"></li>
+    </div>
+</ul>
