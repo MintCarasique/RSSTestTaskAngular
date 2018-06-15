@@ -16,4 +16,9 @@ export class UserService {
         var reqHeader = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded'});
         return this.http.post(this.serverUrl + '/token', data, { headers: reqHeader });
     }
+
+    logOut(){
+        this.logged = false;
+        localStorage.removeItem("userToken");
+    }
 }
