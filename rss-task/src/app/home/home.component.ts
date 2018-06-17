@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../shared/news.service';
 import { News } from '../shared/news.model';
-import { Comment } from '../shared/comment.model'
 import { NewsPage } from '../shared/news-page.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../shared/user.service';
@@ -17,6 +16,7 @@ export class HomeComponent implements OnInit {
 
     newsList: News[];
     newsPage: NewsPage;
+    modalReference: any;
     currentPage: number;
     collectionSize: number;
     constructor(
@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     }
 
     open(content){
-        this.modalService.open(content);
+        this.modalReference = this.modalService.open(content);
     }
 
     getNewsPage() {
@@ -48,7 +48,9 @@ export class HomeComponent implements OnInit {
 
     AddComment(newsId: number, commentText: string){
         this.commentService.postComment(newsId, commentText, "TestAuthor").subscribe(data => {
-            this.router.navigate(['/home']);
+            this.getNewsPage();
+            this.router.navigateByUrl('/home');
+            this.modalReference.close();
         })
     }
 
