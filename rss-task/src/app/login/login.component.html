@@ -1,5 +1,5 @@
 <div class="container col-md-4">
-    <form #f="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
+    <form #f="ngForm" class="col s12 white" action="http://localhost:49831/" (ngSubmit)="OnSubmit(UserName.value,Password.value)">
         <div *ngIf="isLoginError" class="alert alert-danger" role="alert">
             <strong>Error!</strong> Incorrect E-mail or password
         </div>

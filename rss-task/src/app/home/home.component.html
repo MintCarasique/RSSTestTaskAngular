@@ -1,5 +1,6 @@
 <ul class="list-group">
-    <div *ngFor="let newsEl of newsList">
+    <div *ngFor="let newsEl of newsPage.PageOfNews">
         <li class="list-group-item" [innerHTML]="newsEl.Description"></li>
     </div>
 </ul>
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="newsPage.CollectionSize" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"(pageChange)="getNewsPage()"></ngb-pagination>
