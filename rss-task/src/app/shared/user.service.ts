@@ -9,6 +9,8 @@ export class UserService {
 
     @Output() logged = false;
 
+    @Output() login: string;
+
     constructor(private http: HttpClient) { }
 
     userAuthentication(userName, password) {

@@ -15,6 +15,7 @@ import { AuthGuard } from './shared/auth.guard';
 
 import { UserService } from './shared/user.service';
 import { NewsService } from './shared/news.service';
+import { CommentService } from './shared/comment.service';
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
@@ -41,7 +42,8 @@ const routes: Routes = [
     ],
     providers: [
         UserService,
-        NewsService
+        NewsService,
+        CommentService
     ],
     bootstrap: [AppComponent]
 })

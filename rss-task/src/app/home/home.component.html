@@ -19,19 +19,25 @@
             </button>
         </div>
         <div class="modal-body">
+            <p class="mb-1" *ngIf="newsEl.Comments.length == 0">No comments</p>
             <ul class="list-group">
-                <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let comment of newsEl.Comments" >
+                <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let comment of newsEl.Comments">
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">List group item heading</h5>
-                      <small class="text-muted">TestAuth</small>
+                        <h5 class="mb-1">{{comment.Author}}</h5>
                     </div>
-                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                    <small class="text-muted">Donec id elit non mi porta.</small>
+                    <p class="mb-1">{{comment.Text}}</p>
                 </div>
             </ul>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+            <form #f="ngForm" (ngSubmit)="AddComment(newsEl.Id, CommentText.value)">
+                <div class="form-group col-xs-12">
+                    <label for="commentTextArea">New comment text</label>
+                    <textarea class="form-control" #CommentText ngModel name="CommentText" id="commentTextArea" placeholder="Enter your comment here" rows="3" required></textarea>
+                </div>
+                <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Add comment</button>
+            </form>
+           
         </div>
     </ng-template>
 </div>
