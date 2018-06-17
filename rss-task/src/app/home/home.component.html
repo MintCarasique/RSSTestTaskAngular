@@ -1,7 +1,17 @@
-<ul class="list-group">
-    <div *ngFor="let newsEl of newsPage.PageOfNews">
-        <li class="list-group-item" [innerHTML]="newsEl.Description"></li>
-        <li >Date: {{newsEl.Date | date}}</li>
+<div *ngFor="let newsEl of newsPage.PageOfNews">
+    <div class="card text-center bg-light" style="margin-bottom: 2rem">
+        <div class="card-header">
+            {{newsEl.Title}}
+        </div>
+        <div class="card-body">
+            <li class="list-group-item" [innerHTML]="newsEl.Description"></li>
+        </div>
+        <div class="card-footer text-muted">
+            {{newsEl.Date | date}}
+            
+        </div>
     </div>
-</ul>
-<ngb-pagination class="d-flex justify-content-center" [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="5" [rotate]="true" [pageSize]="5" [ellipses]="false" [boundaryLinks]="true"(pageChange)="getNewsPage()"></ngb-pagination>
+</div>
+
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="5"
+    [rotate]="true" [pageSize]="5" [ellipses]="false" [boundaryLinks]="true" (pageChange)="getNewsPage()"></ngb-pagination>
