@@ -8,10 +8,35 @@
         </div>
         <div class="card-footer text-muted">
             {{newsEl.Date | date}}
-            
+            <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Show comments</button>
         </div>
     </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title">Comments</h4>
+            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <ul class="list-group">
+                <div class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let comment of newsEl.Comments" >
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">List group item heading</h5>
+                      <small class="text-muted">TestAuth</small>
+                    </div>
+                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                    <small class="text-muted">Donec id elit non mi porta.</small>
+                </div>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+        </div>
+    </ng-template>
 </div>
+
+
 
 <ngb-pagination class="d-flex justify-content-center" [collectionSize]="collectionSize" [(page)]="currentPage" [maxSize]="5"
     [rotate]="true" [pageSize]="5" [ellipses]="false" [boundaryLinks]="true" (pageChange)="getNewsPage()"></ngb-pagination>

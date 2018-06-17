@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../shared/news.service';
 import { News } from '../shared/news.model';
 import { NewsPage } from '../shared/news-page.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
     newsPage: NewsPage;
     currentPage: number;
     collectionSize: number;
-    constructor(private newsService: NewsService) { }
+    constructor(private newsService: NewsService, private modalService: NgbModal) { }
 
     ngOnInit() {
         this.newsService.getNewsPage(1).subscribe(data => {
@@ -22,6 +23,10 @@ export class HomeComponent implements OnInit {
             this.collectionSize = data.CollectionSize;
         })
         this.currentPage = 1;
+    }
+
+    open(content){
+        this.modalService.open(content);
     }
 
     getNewsPage() {
