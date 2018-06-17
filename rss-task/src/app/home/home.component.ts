@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
     constructor(private newsService: NewsService) { }
 
     ngOnInit() {
-        //this.newsService.getNews().subscribe(data => {this.newsList = data})
         this.newsService.getNewsPage(1).subscribe(data => {
             this.newsPage = data;
             this.collectionSize = data.CollectionSize;
@@ -30,6 +29,9 @@ export class HomeComponent implements OnInit {
             this.newsPage = data;
             this.collectionSize = data.CollectionSize;
         })
+    }
+
+    convertDate(date: string){
     }
 
 }
