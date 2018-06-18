@@ -35,7 +35,7 @@ export class UserService {
     }
 
     logOut(){
-        this.logged = false;
-        localStorage.removeItem("userToken");
+        var body = {}
+        return this.http.post(this.serverUrl + '/api/account/logout', body)
     }
 }

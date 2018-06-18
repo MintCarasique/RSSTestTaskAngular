@@ -20,13 +20,19 @@ export class NavigationBarComponent implements OnInit {
     }
 
     onLogOut() {
-        this.userService.logOut();
-        this.router.navigateByUrl("/login");
+        this.userService.logOut().subscribe(data => {
+            this.userService.logged = false;
+            localStorage.removeItem("userToken");
+            this.router.navigateByUrl("/login");
+        });
     }
 
-    onRegister(){
-        this.userService.logOut();
-        this.router.navigateByUrl("/register");
+    onRegister() {
+        this.userService.logOut().subscribe(data => {
+            this.userService.logged = false;
+            localStorage.removeItem("userToken");
+            this.router.navigateByUrl("/register");
+        });
     }
 
 }
