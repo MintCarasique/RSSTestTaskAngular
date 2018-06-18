@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
 
     newsList: News[];
     newsPage: NewsPage;
+    authorName: string;
     modalReference: any;
     currentPage: number;
     collectionSize: number;
@@ -33,6 +34,10 @@ export class HomeComponent implements OnInit {
             this.collectionSize = data.CollectionSize;
         })
         this.currentPage = 1;
+        this.userService.getUserInfo().subscribe((data:any) =>{
+            this.userService.login = data.UserName;
+            this.authorName = data.UserName;
+        })
     }
 
     open(content){
@@ -47,7 +52,7 @@ export class HomeComponent implements OnInit {
     }
 
     AddComment(newsId: number, commentText: string){
-        this.commentService.postComment(newsId, commentText, "TestAuthor").subscribe(data => {
+        this.commentService.postComment(newsId, commentText, this.authorName).subscribe(data => {
             this.getNewsPage();
             this.router.navigateByUrl('/home');
             this.modalReference.close();

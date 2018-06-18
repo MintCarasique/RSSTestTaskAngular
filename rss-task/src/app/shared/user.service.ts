@@ -19,6 +19,10 @@ export class UserService {
         return this.http.post(this.serverUrl + '/token', data, { headers: reqHeader });
     }
 
+    getUserInfo(){
+        return this.http.get(this.serverUrl + '/api/account/UserInfo');
+    }
+
     userRegistration(userName, email, password, confirmPassword){
         var body = {
             "Email":email,
