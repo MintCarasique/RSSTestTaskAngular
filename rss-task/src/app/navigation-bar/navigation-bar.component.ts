@@ -24,4 +24,9 @@ export class NavigationBarComponent implements OnInit {
         this.router.navigateByUrl("/login");
     }
 
+    onRegister(){
+        this.userService.logOut();
+        this.router.navigateByUrl("/register");
+    }
+
 }
