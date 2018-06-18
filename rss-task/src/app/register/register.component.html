@@ -1,3 +1,26 @@
-<p>
-  register works!
-</p>
+<div class="container col-md-4">
+    <div *ngIf="isRegisterError" class="alert alert-danger" role="alert">
+        <strong>Error!</strong> {{errorText}}
+    </div>
+    <form #f="ngForm" class="col s12 white" (ngSubmit)="OnSubmit(NickName.value, Email.value, Password.value, ConfirmPassword.value)">
+        <div class="form-group">
+            <label for="InputEmail">Email address</label>
+            <input type="email" #Email ngModel name="Email" class="form-control" id="InputEmail" placeholder="Enter email" required>
+        </div>
+        <div class="form-group">
+            <label for="InputNickname">Nick name</label>
+            <input type="text" #NickName ngModel name="NickName" class="form-control" id="InputNickname" placeholder="Enter nick name"
+                required>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Password</label>
+            <input type="password" #Password ngModel name="Password" class="form-control" id="InputPassword" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Confirm password</label>
+            <input type="password" #ConfirmPassword ngModel name="ConfirmPassword" class="form-control" id="InputPassword" placeholder="Confirm password"
+                required>
+        </div>
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

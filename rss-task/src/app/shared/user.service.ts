@@ -19,6 +19,17 @@ export class UserService {
         return this.http.post(this.serverUrl + '/token', data, { headers: reqHeader });
     }
 
+    userRegistration(userName, email, password, confirmPassword){
+        var body = {
+            "Email":email,
+            "userName": userName,
+            "Password": password,
+            "ConfirmPassword": confirmPassword
+        }
+
+        return this.http.post(this.serverUrl + '/api/account/register', body);
+    }
+
     logOut(){
         this.logged = false;
         localStorage.removeItem("userToken");

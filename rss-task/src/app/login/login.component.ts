@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
-    OnSubmit(userName,password){
-        this.userService.userAuthentication(userName,password).subscribe((data : any)=>{
+    OnSubmit(username, password){
+        this.userService.userAuthentication(username, password).subscribe((data : any)=>{
          localStorage.setItem('userToken',data.access_token);
          this.userService.logged = true;
          this.userService.login = data.userName;
