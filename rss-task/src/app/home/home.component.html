@@ -33,7 +33,6 @@
             <div class="container">
                 <form #f="ngForm" (ngSubmit)="AddComment(newsEl.Id, CommentText.value)">
                     <div class="form-group col-xs-12">
-                        <label for="commentTextArea">New comment text</label>
                         <textarea class="form-control" #CommentText ngModel name="CommentText" id="commentTextArea" placeholder="Enter your comment here"
                             rows="3" required></textarea>
                     </div>
